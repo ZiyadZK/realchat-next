@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site":"ziyad-realchat-next",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
