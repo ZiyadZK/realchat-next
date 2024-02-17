@@ -11,8 +11,6 @@ import { PrismaClient } from "@prisma/client";
 import { FormEvent, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const prisma = new PrismaClient();
-
 export default function LoginPage() {
     const [showPass, setShowPass] = useState(false);
     const [loginData, setLoginData] = useState({
@@ -35,7 +33,6 @@ export default function LoginPage() {
         if(userData) {
             setLoginLoading(state => !state);
             toast.success('Successfully Logged in!');
-            goTo('/');
         }else{
             setLoginLoading(state => !state);
             toast.error('Wrong username / password!');
@@ -65,8 +62,8 @@ export default function LoginPage() {
         <MainLayout>
             <Toaster />
             <div className="w-5/6 md:w-1/2 p-5 bg-white/10 backdrop-blur-md  rounded-lg">
-                <div className="grid grid-cols-2 divide-x-2 divide-white/40">
-                    <div className="w-full col-span-2 md:col-span-1 md:pr-5">
+                <div className="grid grid-cols-2 md:divide-x-2 divide-white/40">
+                    <div className="hidden md:block w-full md:col-span-1 md:pr-5">
                         <h1 className="text-xl font-extralight">
                             Sign in with your Account<span className="font-bold text-orange-600">.</span>
                         </h1>
@@ -111,13 +108,13 @@ export default function LoginPage() {
                                 </a>
                             </div>
                             <div className="justify-center items-center w-full flex md:hidden">
-                                <a href="/register" className="text-white/60 hover:text-white focus:text-white transition-all duration-300">
+                                <a href="" className="text-white/60 hover:text-white focus:text-white transition-all duration-300">
                                     Create an Account
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div className="hidden md:block w-full md:pl-5">
+                    <div className="w-full col-span-2 md:col-span-1 md:pl-5">
                         <h1 className="text-xl font-extralight">
                             Create your Account<span className="font-bold text-orange-600">.</span>
                         </h1>
@@ -150,6 +147,11 @@ export default function LoginPage() {
                                 </button>
                             )}
                         </form>
+                        <div className="flex mt-3 justify-center w-full md:hidden">
+                            <a href="/login" className="text-white/60 hover:text-white focus:text-white transition-all duration-300">
+                                Already have an Account?
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
